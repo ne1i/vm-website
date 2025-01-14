@@ -1,0 +1,56 @@
+    1  ls
+    2  cd /
+    3  ls
+    4  ps aux | grep nginx
+    5  ls -a usr
+    6  ls -a home
+    7  micro /etc/pathwd
+    8  micro /etc/passwd
+    9  micro /etc/passwd
+   10  micro /etc/nginx/nginx.conf 
+   11  cd /srv/http/
+   12  mkdir mon_site
+   13  cd mon_site/
+   14  touch index.html
+   15  echo coucou > index.html
+   16  cat index.html 
+   17  ls -l
+   18  systemctl reboot nginx
+   19  systemctl restart nginx
+   20  nging -t
+   21  nginx -t
+   22  micro /etc/nginx/nginx.conf 
+   23  nginx -t
+   24  systemctl restart nginx
+   25  systemctl status nginx
+   26  micro /etc/nginx/nginx.conf 
+   27  systemctl reoad nginx
+   28  systemctl reload nginx
+   29  nginx -t
+   30  nginx -T
+   31  nginx -T | less
+   32  nginx -T | more
+   33  nginx -T | more
+   34  clear
+   35  systemctl status sshd
+   36  sudo pacman -Syu sshd
+   37  sudo pacman -Syu ssh
+   38  ssh
+   39  sudo pacman -Ss ssh
+   40  pacman -Syu less
+   41  sudo pacman -Ss ssh|less
+   42  sudo pacman -Syu openssh
+   43  systemctl status sshd
+   44  clear
+   45  systemctl status sshd
+   46  systemctl enable --now sshd
+   47  systemctl status sshd
+   48  micro /etc/sshd
+   49  micro /etc/sshd/sshd.conf
+   50  ls /etc/sshd/
+   51  ls /etc/sshd
+   52  ls /etc/ssh
+   53  micro /etc/ssh/sshd_config
+   54  systemctl reload sshd
+   55  history | less
+   56  history >> /srv/http/mon_site/command.txt
