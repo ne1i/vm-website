@@ -17,27 +17,56 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img height="30em" src="/favicon.ico" alt="Tux">
-                SAÉ Système</a>
+    <nav class="navbar bg-body-tertiary sticky-top">
+        <div class="container-fluid d-flex justify-content-start gap-2">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <a class="navbar-brand" href="#">
+                <img height="30em" src="/favicon.ico" alt="Tux">
+                SAÉ Système</a>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const navLinks = navbarSupportedContent.querySelectorAll('a')
+                    const navbarCollapse = new bootstrap.Collapse(navbarSupportedContent)
+                    navLinks.forEach(link => {
+                        link.addEventListener('click', e => {
+                            navbarCollapse.hide()
+                        })
+                    })
+                });
+            </script>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#saesys">Installation de la VM</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href=""></a>
-                    </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="#vm-install">Création de la VM sur VirtualBox</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#user-groups">Création des utilisateurs et des groupes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#prompt-customization">Personnalisation du prompt</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nginx-install">Installation du serveur nginx</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nginx-vhost">Configuration d'un hôte virtuel avec nginx</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#site-development">Rédaction du site web</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#site-deployment">Déploiement du site web sur la VM</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gantt-chart">Diagramme de Gantt</a>
+                    </li>
                 </ul>
-
             </div>
         </div>
     </nav>
@@ -45,21 +74,23 @@
         <h1 class="text-center fw-bold" id="saesys">SAÉ Système</h1>
         <h2>Table des matières</h2>
         <ul>
-            <li>Installation de la VM</li>
-            <li>Installation de l'OS</li>
-            <li>Installation de l'éditeur</li>
-            <li>Configuration de l'éditeur</li>
-            <li>Configuration de l'IDE</li>
-            <li>Configuration de l'outil de suivi de code</li>
-            <li>Conclusion</li>
+            <li><a href="#vm-install">Création de la VM sur VirtualBox</a></li>
+            <li><a href="#user-groups">Création des utilisateurs et des groupes</a></li>
+            <li><a href="#prompt-customization">Personnalisation du prompt</a></li>
+            <li><a href="#nginx-install">Installation du serveur nginx</a></li>
+            <li><a href="#nginx-vhost">Configuration d'un hôte virtuel avec nginx</a></li>
+            <li><a href="#site-development">Rédaction du site web</a></li>
+            <li><a href="#site-deployment">Déploiement du site web sur la VM</a></li>
+            <li><a href="#gantt-chart">Diagramme de Gantt</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
         </ul>
-        <h2>Création de la VM sur VirtualBox</h2>
+        <h2 id="vm-install">Création de la VM sur VirtualBox</h2>
         <p>Nous avons décidé d'opter pour la distribition Arch Linux.
             Nous l'avons choisie car elle dispose d'un installateur simple (<code>archinstall</code>).
             Nous avons laissé les options par défaut et défini le mot de passe de l'utilisateur <code>root</code>.
         </p>
 
-        <h2>Création des utilisateurs et des groupes</h2>
+        <h2 id="user-groups">Création des utilisateurs et des groupes</h2>
         <p>Pour créer les groupes et utilisateurs demandés (admin_Gr11_Binome2, Binome2_1, Binome2_2, Binome2), nous
             avons exécuté les commandes suivantes :</p>
         <code>
@@ -70,7 +101,7 @@ $ useradd Binome2_2
 $ groupadd Binome2<!-- <span style="color: darkgray"></span> -->
 </pre>
         </code>
-        <h2>Personnalisation du prompt</h2>
+        <h2 id="prompt-customization">Personnalisation du prompt</h2>
         <p>Nous avons modifié le fichier <code>/etc/bash.bashrc</code> , fichier qui configure bash à l'échelle du
             système (c'est à dire qui configure bash pour tous les utilisateurs par défaut).
         </p>
@@ -88,7 +119,7 @@ PS1='[\u@\h \W]\$ '
 PS1='\u : '
 </pre>
         </code>
-        <h2>Installation du serveur nginx</h2>
+        <h2 id="nginx-install">Installation du serveur nginx</h2>
         <p>Nous avons installé le packet <code>nginx</code> à l'aide de la commande</p>
         <code>
             <pre class="border bg-black p-1" style="color: lime">
@@ -100,8 +131,8 @@ pacman -Sy nginx
         </p>
         <img class="img-fluid border shadow-sm d-block mx-auto mb-4" src="/assets/nginx_status.png"
             alt="Statut du service nginx" width="716" height="213">
-        <h2>Configuration d'un hôte virtuel avec nginx</h2>
-        config port hote virtuel recharger conf avec systemctl reload nginx
+        <h2 id="nginx-vhost">Configuration d'un hôte virtuel avec nginx</h2>
+        <p>config port hote virtuel recharger conf avec systemctl reload nginx</p>
         <p>De manière arbitraire nous avons décidé de configurer notre serveur HTTP pour écouter sur le port 8000.
         </p>
         <p>
@@ -114,7 +145,7 @@ pacman -Sy nginx
             port 8000 les fichiers situés dans le répertoire <code>/srv/http/mon_site</code>.</p>
         <img class="img-fluid border shadow-sm d-block mx-auto mb-4" src="assets/nginx_conf.png"
             alt="Configuration du fichier nginx.conf" width="1280" height="800">
-        <h2>Rédaction du site web</h2>
+        <h2 id="site-development">Rédaction du site web</h2>
         <p>Pour écrire ce site web nous avons donc utilisé le framework UI Bootstrap 5. Nous avons décidé d'écrire tout
             le contenu du site dans un seul fichier <code>index.html</code>. Cela simplifie le développement du site en
             nous évitant
@@ -123,19 +154,12 @@ pacman -Sy nginx
         <p>Pour structurer le document nous avons décidé de structurer le document en chapitres et de lister les
             différentes parties grâce a la <code>navbar</code> et une table des matières. Nous avons agrémenté d'images
             et d'extraits de code.</p>
-        <h2>Déploiement du site web sur la VM</h2>
+        <h2 id="site-deployment">Déploiement du site web sur la VM</h2>
         <p>Pour envoyer les fichiers du site développés localement vers la VM, nous nous sommes connectés en SFTP avec
             l'utilisateur <code>root</code> grâce au logiciel FileZilla.</p>
         <img class="img-fluid border shadow-sm d-block mx-auto mb-4" src="/assets/filezilla.png"
             alt="Statut du service nginx" width="1186" height="943">
-
-
-
-
-
-
-
-        <h2>Diagramme de Gantt</h2>
+        <h2 id="gantt-chart">Diagramme de Gantt</h2>
         <p>Nous avons utilisé le logiciel <em>Gantt Project</em> pour concevoir notre diagramme de Gantt.</p>
         <div class="d-flex justify-content-center">
 
@@ -149,7 +173,6 @@ pacman -Sy nginx
                 </figure>
             </a>
         </div>
-
     </div>
     <footer class="container-fluid border-top bg-body-tertiary p-4 text-center">⛵ IUT De Paris - Rives de Seine</footer>
 </body>
