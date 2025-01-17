@@ -19,7 +19,9 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">
+                <img height="30em" src="/favicon.ico" alt="Tux">
+                SAÉ Système</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -28,7 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#mon-site">Installation de la VM</a>
+                        <a class="nav-link active" aria-current="page" href="#saesys">Installation de la VM</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#blabla">Bla Bla</a>
@@ -40,17 +42,9 @@
         </div>
     </nav>
     <div class="container mt-4">
-        <h1 id="mon-site">Installation de la VM</h1>
-        <h2>Préface</h2>
-        <p>Ceci est un article qui va être écrit en français</p>
+        <h1 class="text-center fw-bold" id="saesys">SAÉ Système</h1>
         <h2>Table des matières</h2>
         <ul>
-            <li> <a href="#introduction">Introduction</a></li>
-            <ul>
-                <li><a href="#introduction-1">Introduction 1</a></li>
-                <li><a href="#introduction-2">Introduction 2</a></li>
-                <li><a href="#introduction-3">Introduction 3</a></li>
-            </ul>
             <li>Installation de la VM</li>
             <li>Installation de l'OS</li>
             <li>Installation de l'éditeur</li>
@@ -59,89 +53,82 @@
             <li>Configuration de l'outil de suivi de code</li>
             <li>Conclusion</li>
         </ul>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil, praesentium repellendus impedit cum
-            omnis
-            sint quia accusantium illum magnam, dolor reprehenderit possimus reiciendis ipsa, ullam sequi fugiat
-            suscipit provident voluptas!</p>
+        <h2>Création de la VM sur VirtualBox</h2>
+        <p>Nous avons décidé d'opter pour la distribition Arch Linux.
+            Nous l'avons choisie car elle dispose d'un installateur simple (<code>archinstall</code>).
+            Nous avons laissé les options par défaut et défini le mot de passe de l'utilisateur <code>root</code>.
+        </p>
+
+        <h2>Création des utilisateurs et des groupes</h2>
+        <p>Pour créer les groupes et utilisateurs demandés (admin_Gr11_Binome2, Binome2_1, Binome2_2, Binome2), nous
+            avons exécuté les commandes suivantes :</p>
+        <code>
+            <pre class="border bg-black p-1" style="color: lime">
+$ groupadd admin_Gr11_Binome2
+$ useradd Binome2_1
+$ useradd Binome2_2
+$ groupadd Binome2<!-- <span style="color: darkgray"></span> -->
+</pre>
+        </code>
+        <h2>Personnalisation du prompt</h2>
+        <p>Nous avons modifié le fichier <code>/etc/bash.bashrc</code> , fichier qui configure bash à l'échelle du
+            système (c'est à dire qui configure bash pour tous les utilisateurs par défaut).
+        </p>
+        <p>Nous l'avons modifié de sorte à ce qu'il affiche le nom de l'utilisateur courant.
+            Nous avons changé la ligne :
+        </p>
+        <code>
+            <pre class="border bg-black p-1" style="color: lime">
+PS1='[\u@\h \W]\$ '
+</pre>
+        </code>
+        <p>En : </p>
+        <code>
+            <pre class="border bg-black p-1" style="color: lime">
+PS1='\u : '
+</pre>
+        </code>
+        <h2>Installation du serveur nginx</h2>
+        <p>Nous avons installé le packet <code>nginx</code> à l'aide de la commande</p>
+        <code>
+            <pre class="border bg-black p-1" style="color: lime">
+pacman -Sy nginx
+</pre>
+        </code>
+        <p>Nous avons vérifié que le service nginx était bien démarré à l'aide de la commande
+            <code>systemctl status nginx</code>.
+        </p>
+        <img class="img-fluid border shadow-sm d-block mx-auto mb-4" src="/assets/nginx_status.png"
+            alt="Statut du service nginx" width="716" height="213">
+        <h2>Configuration d'un hôte virtuel avec nginx</h2>
+        config port hote virtuel recharger conf avec systemctl reload nginx
+        <p></p>
+        <h2>Rédaction du site web</h2>
+        <h2>Déploiement du site web sur la VM</h2>
 
 
-        <div class="alert alert-warning" role="alert">
-            Note : Nous avons décidé d'utiliser <code>fish</code> pour avoir de l'autocomplétion
+
+
+
+
+
+        <h2>Diagramme de Gantt</h2>
+        <p>Nous avons utilisé le logiciel <em>Gantt Project</em> pour concevoir notre diagramme de Gantt.</p>
+        <div class="d-flex justify-content-center">
+
+            <a class="" href="/assets/saesysteme.gan">
+                <figure class="figure">
+                    <img class="img-fluid border rounded shadow-sm" src="/assets/gantt.png" alt="diagramme de gantt"
+                        width="486" height="315">
+                    <figcaption class="figure-caption">Cliquer sur l'image pour télécharger le projet Gantt
+                    </figcaption>
+
+                </figure>
+            </a>
         </div>
-        <h2 id="blabla">Bla Bla</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, temporibus ea minima sed minus ipsam
-            vitae animi molestiae quod nemo a laudantium assumenda eligendi quam eius doloribus fugit aliquam eaque!
-        </p>
-        <img src="https://picsum.photos/600/500" class="img-fluid border rounded shadow-sm mx-auto d-block" width="600"
-            height="500" alt="image">
-        <!-- <div class="m-5">
-            <span class="border shadow-sm bg-success-subtle p-3 mx-2 d-inline-block">demo text</span>
-            <span class="border shadow-sm bg-success-subtle p-3 mx-2 d-inline-block">demo text</span>
-            <span class="border shadow-sm bg-success-subtle p-3 mx-2 d-inline-block">demo text</span>
-            <span class="border shadow-sm bg-success-subtle p-3 mx-2 d-inline-block">demo text</span>
-        </div> -->
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quisquam rem iste. Aspernatur ratione
-            repellendus nesciunt consectetur maxime delectus est rerum reiciendis corporis illum. Nesciunt nisi eum
-            distinctio similique veniam!
-            Nostrum, iste expedita quia quaerat deserunt suscipit culpa reiciendis ipsam esse consectetur,
-            voluptates
-            assumenda aliquam dolorum vitae porro ipsum distinctio tempore in error, ut itaque dolores. Quibusdam
-            rerum
-            totam quidem.
-            Atque dolore architecto nihil qui voluptatem tempora a magni totam illo rerum quae, quo doloribus harum
-            odit, ullam nobis, facilis voluptatum consequuntur sunt aut? Suscipit dolore qui officiis libero
-            doloremque.
-        </p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quisquam rem iste. Aspernatur ratione
-            repellendus nesciunt consectetur maxime delectus est rerum reiciendis corporis illum. Nesciunt nisi eum
-            distinctio similique veniam!
-            Nostrum, iste expedita quia quaerat deserunt suscipit culpa reiciendis ipsam esse consectetur,
-            voluptates
-            assumenda aliquam dolorum vitae porro ipsum distinctio tempore in error, ut itaque dolores. Quibusdam
-            rerum
-            totam quidem.
-            Atque dolore architecto nihil qui voluptatem tempora a magni totam illo rerum quae, quo doloribus harum
-            odit, ullam nobis, facilis voluptatum consequuntur sunt aut? Suscipit dolore qui officiis libero
-            doloremque.
-        </p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quisquam rem iste. Aspernatur ratione
-            repellendus nesciunt consectetur maxime delectus est rerum reiciendis corporis illum. Nesciunt nisi eum
-            distinctio similique veniam!
-            Nostrum, iste expedita quia quaerat deserunt suscipit culpa reiciendis ipsam esse consectetur,
-            voluptates
-            assumenda aliquam dolorum vitae porro ipsum distinctio tempore in error, ut itaque dolores. Quibusdam
-            rerum
-            totam quidem.
-            Atque dolore architecto nihil qui voluptatem tempora a magni totam illo rerum quae, quo doloribus harum
-            odit, ullam nobis, facilis voluptatum consequuntur sunt aut? Suscipit dolore qui officiis libero
-            doloremque.
-        </p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quisquam rem iste. Aspernatur ratione
-            repellendus nesciunt consectetur maxime delectus est rerum reiciendis corporis illum. Nesciunt nisi eum
-            distinctio similique veniam!
-            Nostrum, iste expedita quia quaerat deserunt suscipit culpa reiciendis ipsam esse consectetur,
-            voluptates
-            assumenda aliquam dolorum vitae porro ipsum distinctio tempore in error, ut itaque dolores. Quibusdam
-            rerum
-            totam quidem.
-            Atque dolore architecto nihil qui voluptatem tempora a magni totam illo rerum quae, quo doloribus harum
-            odit, ullam nobis, facilis voluptatum consequuntur sunt aut? Suscipit dolore qui officiis libero
-            doloremque.
-        </p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quisquam rem iste. Aspernatur ratione
-            repellendus nesciunt consectetur maxime delectus est rerum reiciendis corporis illum. Nesciunt nisi eum
-            distinctio similique veniam!
-            Nostrum, iste expedita quia quaerat deserunt suscipit culpa reiciendis ipsam esse consectetur,
-            voluptates
-            assumenda aliquam dolorum vitae porro ipsum distinctio tempore in error, ut itaque dolores. Quibusdam
-            rerum
-            totam quidem.
-            Atque dolore architecto nihil qui voluptatem tempora a magni totam illo rerum quae, quo doloribus harum
-            odit, ullam nobis, facilis voluptatum consequuntur sunt aut? Suscipit dolore qui officiis libero
-            doloremque.
-        </p>
-    </div>
 
+    </div>
+    <footer class="container-fluid border-top bg-body-tertiary p-4 text-center">⛵ IUT De Paris - Rives de Seine</footer>
 </body>
 <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
