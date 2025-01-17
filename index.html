@@ -33,7 +33,7 @@
                         <a class="nav-link active" aria-current="page" href="#saesys">Installation de la VM</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#blabla">Bla Bla</a>
+                        <a class="nav-link" href=""></a>
                     </li>
 
                 </ul>
@@ -102,9 +102,32 @@ pacman -Sy nginx
             alt="Statut du service nginx" width="716" height="213">
         <h2>Configuration d'un hôte virtuel avec nginx</h2>
         config port hote virtuel recharger conf avec systemctl reload nginx
-        <p></p>
+        <p>De manière arbitraire nous avons décidé de configurer notre serveur HTTP pour écouter sur le port 8000.
+        </p>
+        <p>
+            Tout
+            d'abord nous avons configuré notre routeur afin de rediriger les trames TCP reçus sur le port 80 au port
+            8000 de mon PC. Ensuite
+            nous avons redirigé le port hôte 8000 au port invité 8000 de la VM. </p>
+        <p>Pour finir, nous avons ajouté au fichier <code>/etc/nginx/nginx.conf</code> la configuration suivante afin de
+            desservir au
+            port 8000 les fichiers situés dans le répertoire <code>/srv/http/mon_site</code>.</p>
+        <img class="img-fluid border shadow-sm d-block mx-auto mb-4" src="assets/nginx_conf.png"
+            alt="Configuration du fichier nginx.conf" width="1280" height="800">
         <h2>Rédaction du site web</h2>
+        <p>Pour écrire ce site web nous avons donc utilisé le framework UI Bootstrap 5. Nous avons décidé d'écrire tout
+            le contenu du site dans un seul fichier <code>index.html</code>. Cela simplifie le développement du site en
+            nous évitant
+            de devoir jongler entre plusieurs fichiers.</p>
+
+        <p>Pour structurer le document nous avons décidé de structurer le document en chapitres et de lister les
+            différentes parties grâce a la <code>navbar</code> et une table des matières. Nous avons agrémenté d'images
+            et d'extraits de code.</p>
         <h2>Déploiement du site web sur la VM</h2>
+        <p>Pour envoyer les fichiers du site développés localement vers la VM, nous nous sommes connectés en SFTP avec
+            l'utilisateur <code>root</code> grâce au logiciel FileZilla.</p>
+        <img class="img-fluid border shadow-sm d-block mx-auto mb-4" src="/assets/filezilla.png"
+            alt="Statut du service nginx" width="1186" height="943">
 
 
 
